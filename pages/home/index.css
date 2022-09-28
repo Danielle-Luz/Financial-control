@@ -1,1 +1,22 @@
-/* Desenvolva a estilização da sua página aqui */
+button {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.b-delete {
+    height: 26px;
+    width: 28.25px;
+}
+
+.b-delete.bg-white.border-grey-lighter:hover {
+    border-color: var(--color-grey-5);
+    background-color: var(--color-grey-5);
+}
+
+.trash path {
+    fill: #adb5bd;
+}
+
+.b-delete:hover .trash path {
+    fill: #495057;
+}

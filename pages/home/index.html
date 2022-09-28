@@ -1,19 +1,101 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control Finance</title>
-    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
-    <meta name="description" content="Control Finance - Seu controle financeiro">
-    <link rel="stylesheet" href="/styles/globalStyles.css">
-    <link rel="stylesheet" href="index.css">
-</head>
-<body>
-    <main id="app"></main>
-    <script src="/scripts/modal.js"></script>
-    <script src="valuesData.js"></script>
-    <script src="index.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Control Finance</title>
+        <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+        <meta name="description" content="Control Finance - Seu controle financeiro">
+        <link rel="stylesheet" href="/styles/globalStyles.css">
+        <link rel="stylesheet" href="/styles/colors.css">
+        <link rel="stylesheet" href="/styles/texts.css">
+        <link rel="stylesheet" href="/styles/flex.css">
+        <link rel="stylesheet" href="/styles/sizes.css">
+        <link rel="stylesheet" href="/styles/borders.css">
+        <link rel="stylesheet" href="/styles/spacing.css">
+        <link rel="stylesheet" href="/styles/modal.css">
+        <link rel="stylesheet" href="/styles/positions.css">
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="/styles/media.css">
+    </head>
+    <body class="d-flex flex-column gap-2">
+        <div class="full-width full-height bg-opacity d-flex justify-center align-center position-fixed d-none" id="modal">
+            <article class="modal bg-white d-flex flex-column gap-4 full-width radius-1">
+                <section class="full-width d-flex justify-between align-center">
+                    <h2 class="title-2">Registro de valor</h2>
+                    <button class="close-button title-2 bg-grey-5 radius-2" data-modal-id="modal">X</button>
+                </section>
+                <p class="text-1">
+                    Digite o valor e em seguida aperte no botão referente ao tipo do valor 
+                </p>
+                <form class="d-flex flex-column gap-9">
+                    <label class="text-1">Valor</label>
+                    <div class="d-flex position-relative full-width align-center">
+                        <span class="position-absolute text-1 left-1">R$</span>
+                        <input class="full-width radius-1 border-1 border-grey-darker d-flex" type="number" placeholder="00,00" id="input-value">
+                    </div>
+                </form>
+                <section class="d-flex gap-6 flex-column full-width value-type-wrapper full-width">
+                    <h2 class="text-1">Tipo de valor</h2>
+                    <div class="d-flex gap-8 flex-column full-width value-type">
+                        <button class="border-1 border-grey-lighter pd-inline-1 bg-white radius-1 color-grey-2">Entrada</button>
+                        <button class="border-1 border-grey-lighter pd-inline-1 bg-white radius-1 color-grey-2">Saída</button>
+                    </div>
+                </section>
+                <div class="d-flex gap-6 self-end full-width button-group">
+                    <button class="bg-grey-5 border-1 border-grey-lighter pd-inline-1 radius-1">Cancelar</button>
+                    <button class="bg-brand-1 border-1 border-brand-1 pd-inline-1 color-white radius-1">Inserir valor</button>
+                </div>
+            </article>
+        </div>
+        <div class="bg-grey-5">
+            <header class="container d-flex justify-between pd-block-1">
+                <div class="d-flex flex-column justify-between full-width gap-5 header-inner-wrapper">
+                    <h1 class="title-1"><span class="color-brand-1">Control</span> Finance</h1>
+                    <button class="bg-brand-1 color-white border-1 border-brand-1 text-1 pd-inline-1 radius-1">Registrar novo valor</button>
+                </div>
+            </header>
+        </div>
+        <main id="app" class="container d-flex flex-column gap-2">
+            <article class="d-flex flex-column gap-1 financial-summary">
+                <h2 class="title-2">Resumo financeiro</h2>
+                <div class="d-flex gap-6">
+                    <button class="bg-white border-1 border-grey-lighter pd-inline-1 radius-1" id="all-filter">
+                        Todos
+                    </button>
+                    <button class="bg-white border-1 border-grey-lighter pd-inline-1 radius-1" id="entries-filter">
+                        Entradas
+                    </button>
+                    <button class="bg-white border-1 border-grey-lighter pd-inline-1 radius-1" id="exits-filter">
+                        Saídas
+                    </button>
+                </div>
+            </article>
+            <article class="d-flex justify-between pd-1 bg-grey-4 radius-1">
+                <h2 class="text-1">Soma dos valores</h2>
+                <span class="text-1" id="total">R$ 1500</span>
+            </article>
+            <button class="pd-block-2 full-width bg-grey-5 radius-1 d-flex flex-column align-center gap-6 border-2 border-grey-darker fit-height" data-modal-id="modal">
+                <h2 class="title-2-bold fit-width">Nenhum valor cadastrado</h2>
+                <p class="text-1 color-grey-2 fit-width">Registrar novo valor</p>
+            </button>
+            <article class="d-flex flex-column gap-4 d-none" id="value-list">
+                <article class="d-flex justify-between pd-2 align-center border-1 border-grey-lighter radius-1">
+                    <span class="price text-1">R$ 40,00</span>
+                    <div class="d-flex gap-2">
+                        <span class="pd-2 bg-grey-4 border-grey-lighter radius-2 text-1">Entrada</span>
+                        <button class="b-delete bg-white border-1 border-grey-lighter radius-2">
+                            <svg class="trash" width="13" height="14" viewBox="0 0 13 14" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.5625 0.875H9.28125L9.00781 0.382812C8.89844 0.164062 8.67969 0 8.43359 0H5.28906C5.04297 0 4.82422 0.164062 4.71484 0.382812L4.46875 0.875H1.1875C0.941406 0.875 0.75 1.09375 0.75 1.3125V2.1875C0.75 2.43359 0.941406 2.625 1.1875 2.625H12.5625C12.7812 2.625 13 2.43359 13 2.1875V1.3125C13 1.09375 12.7812 0.875 12.5625 0.875ZM2.19922 12.7695C2.22656 13.4805 2.80078 14 3.51172 14H10.2109C10.9219 14 11.4961 13.4805 11.5234 12.7695L12.125 3.5H1.625L2.19922 12.7695Z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </article>
+            </article>
+        </main>
+        <script src="/scripts/modal.js"></script>
+        <script src="valuesData.js"></script>
+        <script src="index.js"></script>
+    </body>
 </html>

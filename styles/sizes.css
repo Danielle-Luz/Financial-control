@@ -1,0 +1,19 @@
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.fit-width {
+    width: fit-content;
+}
+
+.fit-height {
+    height: fit-content;
+}
+
+.height-fill {
+    height: 100%;
+}

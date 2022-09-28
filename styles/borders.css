@@ -1,0 +1,21 @@
+.border-1 {
+    border-width: 1.5px;
+    border-style: solid;
+}
+
+.border-2 {
+    border-width: 2px;
+    border-style: dashed;
+}
+
+.border-2:hover {
+    border-color: var(--color-grey-3);
+}
+
+.radius-1 {
+    border-radius: var(--radius-1);
+}
+
+.radius-2 {
+    border-radius: var(--radius-2);
+}

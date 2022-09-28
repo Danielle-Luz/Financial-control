@@ -1,0 +1,33 @@
+@media (min-width: 700px) {
+    main {
+        width: 100%;
+    }
+
+    .header-inner-wrapper {
+        flex-direction: row;
+    }
+
+    .value-type-wrapper {
+        align-items: center;
+    }
+
+    .value-type,
+    .value-type-wrapper {
+        flex-direction: row;
+    }
+
+    .value-type, 
+    .button-group {
+        width: fit-content;
+    }
+
+    .financial-summary {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    button {
+        flex-grow: 0;
+    }
+
+}
