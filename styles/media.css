@@ -4,6 +4,7 @@
     }
 
     .header-inner-wrapper {
+        align-items: center;
         flex-direction: row;
     }
 
