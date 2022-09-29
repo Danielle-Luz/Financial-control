@@ -5,19 +5,45 @@ import { insertedValues } from "./valuesData.js";
     const filterButtons = document.querySelectorAll("[data-is-filter-active]");
     const valuesArray = getLocalStorageInstanceAsArray("valuesArray") || insertedValues;
     let filteredArray;
+
     filterButtons.forEach( button => {
         button.addEventListener("click", event => {
             setValueType(event, "data-is-filter-active");
             filteredArray = filterArrayByValueType();
             appendValueCards(filteredArray);
             showValuesSum(filteredArray);
+            deleteValue();
             toggleEmptyMensage();
         });
     });
+
     appendValueCards(valuesArray);
     showValuesSum(valuesArray);
     toggleEmptyMensage();
+    deleteValue();
 })();
+
+
+function toggleEmptyMensage () {
+    const cardValuesList = document.getElementById("value-list");
+    const emptyMessage = document.getElementById("empty-message");
+    const valuesCardAmount = cardValuesList.querySelectorAll("article").length;
+    if (!valuesCardAmount) {
+        emptyMessage.classList.remove("d-none");
+        cardValuesList.classList.add("d-none");
+    } else {
+        emptyMessage.classList.add("d-none");
+        cardValuesList.classList.remove("d-none");
+    }
+}
+
+function showValuesSum (valuesArray) {
+    const total = document.getElementById("total");
+    const sum = valuesArray.reduce( (total, valueObject) => {
+        return total + valueObject.value;
+    }, 0);
+    total.innerText = sum.toLocaleString("pt-BR", {style: "currency", currency: "BRL"});
+}
 
 function filterArrayByValueType () {
     const activeFilterText = document.querySelector("[data-is-filter-active=on]").innerText;
@@ -61,25 +87,24 @@ function createValueCard (valueData) {
     `;
 }
 
-function toggleEmptyMensage () {
-    const cardValuesList = document.getElementById("value-list");
-    const emptyMessage = document.getElementById("empty-message");
-    const valuesCardAmount = cardValuesList.querySelectorAll("article").length;
-    if (!valuesCardAmount) {
-        emptyMessage.classList.remove("d-none");
-        cardValuesList.classList.add("d-none");
-    } else {
-        emptyMessage.classList.add("d-none");
-        cardValuesList.classList.remove("d-none");
-    }
+function deleteValue () {
+    const deleteButtons = [...document.querySelectorAll(".b-delete")];
+    deleteButtons.forEach( button => {
+        console.log(button);
+        button.addEventListener("click", event => {
+            const valuesArray = getLocalStorageInstanceAsArray("valuesArray") || insertedValues;
+            const buttonClicked = event.target;
+            const cardValue = buttonClicked.closest("[data-value-id]");
+            const deletedCardId = parseInt(cardValue.getAttribute("data-value-id"));
+            const deletedCardIndex = valuesArray.findIndex( value => {
+                return value.id == deletedCardId;
+            });
+            valuesArray.splice(deletedCardIndex, 1);
+            localStorage.setItem("valuesArray", JSON.stringify(valuesArray));
+            cardValue.remove();
+            toggleEmptyMensage();
+        });
+    });
 }
 
-function showValuesSum (valuesArray) {
-    const total = document.getElementById("total");
-    const sum = valuesArray.reduce( (total, valueObject) => {
-        return total + valueObject.value;
-    }, 0);
-    total.innerText = sum.toLocaleString("pt-BR", {style: "currency", currency: "BRL"});
-}
-
-export { appendValueCards, filterArrayByValueType, showValuesSum };
+export { appendValueCards, filterArrayByValueType, showValuesSum, deleteValue, toggleEmptyMensage };

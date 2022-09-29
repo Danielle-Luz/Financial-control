@@ -45,6 +45,7 @@ input {
     padding-block: 11.5px;
     padding-inline-start: 45px;
     padding-inline-end: 12px;
+    outline: none;
 }
 
 .modal

@@ -16,6 +16,4 @@ const insertedValues = [
   },
 ];
 
-const valuesCategory = ["Entrada", "Saída"];
-
 export {insertedValues};
