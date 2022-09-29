@@ -37,7 +37,7 @@ import { appendValueCards, filterArrayByValueType, showValuesSum, deleteValue, t
 function toggleModal () {
     const modal = document.getElementById("modal-wrapper");
     modal.classList.toggle("d-none");
-    
+
     cleanInputs();
 }
 
@@ -83,13 +83,15 @@ function cleanInputs () {
 function verifyInputValue (event) {
     const inputValue = event.target;
     const typedCharacter = event.data;
-
-    if (typedCharacter && !typedCharacter.match(/[0-9]/)) {
-        const inputCharactersList = inputValue.value.split("");
-        const typedCharacterIndex = inputCharactersList.findIndex( character => {
-            return character == typedCharacter;
-        });
+    const inputCharactersList = inputValue.value.split("");
+    const typedCharacterIndex = inputCharactersList.findIndex( character => {
+        return character == typedCharacter;
+    });
+    if (typedCharacter && !typedCharacter.match(/[0-9]/) && !typedCharacter.match(/[\\.]/)) {
         inputCharactersList.splice(typedCharacterIndex, 1);
+        inputValue.value = inputCharactersList.join("");
+    } else if (typedCharacter == "." && typedCharacterIndex != inputCharactersList.lastIndexOf(".")) {
+        inputCharactersList.splice(inputCharactersList.lastIndexOf("."), 1);
         inputValue.value = inputCharactersList.join("");
     }
 }
