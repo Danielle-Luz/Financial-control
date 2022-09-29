@@ -45,6 +45,10 @@ body {
   color: var(--color-grey-1);
 }
 
+a {
+  text-decoration: none;
+}
+
 button {
   cursor: pointer;
   font-family: var(--font-family-1);

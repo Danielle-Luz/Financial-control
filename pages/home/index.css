@@ -20,3 +20,8 @@ button {
 .b-delete:hover .trash path {
     fill: #495057;
 }
+
+.value-type {
+    width: 68px;
+    text-align: center;
+}

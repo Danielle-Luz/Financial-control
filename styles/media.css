@@ -17,7 +17,6 @@
         flex-direction: row;
     }
 
-    .value-type, 
     .button-group {
         width: fit-content;
     }

@@ -11,10 +11,10 @@ function setValueType (event, valueTypesSelector) {
     valueTypes.forEach( valueType => {
         if (valueType != clickedButton) {
             valueType.setAttribute(valueTypesSelector, "off");
-            valueType.style = "background-color: var(--color-mode); color: var(--color-grey-2); border-color: var(--color-grey-5);";
+            valueType.classList.remove("color-brand-1", "bg-brand-3", "border-brand-1");
         } else {
             valueType.setAttribute(valueTypesSelector, "on");
-            valueType.style = "background-color: var(--color-brand-3); color: var(--color-brand-1); border-color: var(--color-brand-1);";
+            valueType.classList.add("color-brand-1", "bg-brand-3", "border-brand-1");
         }
     });
 }
