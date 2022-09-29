@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="/styles/media.css">
     </head>
     <body class="d-flex flex-column gap-2">
-        <div class="full-width full-height bg-opacity d-flex justify-center align-center position-fixed d-none" id="modal">
+        <div class="full-width full-height bg-opacity d-flex justify-center align-center position-fixed d-none" id="modal-wrapper">
             <article class="modal bg-white d-flex flex-column gap-4 full-width radius-1">
                 <section class="full-width d-flex justify-between align-center">
                     <h2 class="title-2">Registro de valor</h2>
@@ -39,13 +39,13 @@
                 <section class="d-flex gap-6 flex-column full-width value-type-wrapper full-width">
                     <h2 class="text-1">Tipo de valor</h2>
                     <div class="d-flex gap-8 flex-column full-width value-type">
-                        <button class="border-1 border-grey-lighter pd-inline-1 bg-white radius-1 color-grey-2">Entrada</button>
-                        <button class="border-1 border-grey-lighter pd-inline-1 bg-white radius-1 color-grey-2">Saída</button>
+                        <button class="border-1 border-grey-lighter pd-inline-1 bg-white radius-1 color-grey-2" data-type-selected="off">Entrada</button>
+                        <button class="border-1 border-grey-lighter pd-inline-1 bg-white radius-1 color-grey-2" data-type-selected="off">Saída</button>
                     </div>
                 </section>
                 <div class="d-flex gap-6 self-end full-width button-group">
-                    <button class="bg-grey-5 border-1 border-grey-lighter pd-inline-1 radius-1">Cancelar</button>
-                    <button class="bg-brand-1 border-1 border-brand-1 pd-inline-1 color-white radius-1">Inserir valor</button>
+                    <button class="bg-grey-5 border-1 border-grey-lighter pd-inline-1 radius-1" data-modal-id="modal">Cancelar</button>
+                    <button class="bg-brand-1 border-1 border-brand-1 pd-inline-1 color-white radius-1" id="b-submit">Inserir valor</button>
                 </div>
             </article>
         </div>
@@ -53,7 +53,7 @@
             <header class="container d-flex justify-between pd-block-1">
                 <div class="d-flex flex-column justify-between full-width gap-5 header-inner-wrapper">
                     <h1 class="title-1"><span class="color-brand-1">Control</span> Finance</h1>
-                    <button class="bg-brand-1 color-white border-1 border-brand-1 text-1 pd-inline-1 radius-1">Registrar novo valor</button>
+                    <button class="bg-brand-1 color-white border-1 border-brand-1 text-1 pd-inline-1 radius-1"  data-modal-id="modal">Registrar novo valor</button>
                 </div>
             </header>
         </div>
@@ -61,22 +61,22 @@
             <article class="d-flex flex-column gap-1 financial-summary">
                 <h2 class="title-2">Resumo financeiro</h2>
                 <div class="d-flex gap-6">
-                    <button class="bg-white border-1 border-grey-lighter pd-inline-1 radius-1" id="all-filter">
+                    <button class="bg-white border-1 border-grey-lighter pd-inline-1 radius-1" data-is-filter-active="on">
                         Todos
                     </button>
-                    <button class="bg-white border-1 border-grey-lighter pd-inline-1 radius-1" id="entries-filter">
+                    <button class="bg-white border-1 border-grey-lighter pd-inline-1 radius-1" data-is-filter-active="off">
                         Entradas
                     </button>
-                    <button class="bg-white border-1 border-grey-lighter pd-inline-1 radius-1" id="exits-filter">
+                    <button class="bg-white border-1 border-grey-lighter pd-inline-1 radius-1" data-is-filter-active="off">
                         Saídas
                     </button>
                 </div>
             </article>
             <article class="d-flex justify-between pd-1 bg-grey-4 radius-1">
                 <h2 class="text-1">Soma dos valores</h2>
-                <span class="text-1" id="total">R$ 1500</span>
+                <span class="text-1" id="total">R$ 0,00</span>
             </article>
-            <button class="pd-block-2 full-width bg-grey-5 radius-1 d-flex flex-column align-center gap-6 border-2 border-grey-darker fit-height" data-modal-id="modal">
+            <button class="pd-block-2 full-width bg-grey-5 radius-1 d-flex flex-column align-center gap-6 border-2 border-grey-darker fit-height" id="empty-message" data-modal-id="modal">
                 <h2 class="title-2-bold fit-width">Nenhum valor cadastrado</h2>
                 <p class="text-1 color-grey-2 fit-width">Registrar novo valor</p>
             </button>
@@ -94,8 +94,7 @@
                 </article>
             </article>
         </main>
-        <script src="/scripts/modal.js"></script>
-        <script src="valuesData.js"></script>
-        <script src="index.js"></script>
+        <script type="module" src="/scripts/modal.js"></script>
+        <script type="module" src="index.js"></script>
     </body>
 </html>

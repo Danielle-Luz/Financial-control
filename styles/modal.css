@@ -1,4 +1,5 @@
 .modal {
+    animation: toggleModal var(--animation-duration) var(--animation-type);
     max-width: 380px;
     margin: 16px;
     height: fit-content;
@@ -58,4 +59,15 @@ button {
 
 .d-none {
     display: none;
+}
+
+
+@keyframes toggleModal {
+    0% {
+        transform: translateY(-250px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
