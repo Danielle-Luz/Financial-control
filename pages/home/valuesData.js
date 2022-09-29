@@ -16,4 +16,4 @@ const insertedValues = [
   },
 ];
 
-export {insertedValues};
+export { insertedValues };

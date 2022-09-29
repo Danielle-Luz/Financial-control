@@ -1,4 +1,9 @@
 @media (min-width: 700px) {
+    .container {
+        max-width: 43rem;
+        margin: 0 auto;
+    }
+
     main {
         width: 100%;
     }
@@ -12,11 +17,12 @@
         align-items: center;
     }
 
-    .value-type,
+    .value-type-buttons,
     .value-type-wrapper {
         flex-direction: row;
     }
 
+    .value-type-buttons,
     .button-group {
         width: fit-content;
     }
@@ -29,5 +35,10 @@
     button {
         flex-grow: 0;
     }
+}
 
+@media (min-width: 310px) {
+    .pd-inline-1 {
+        padding-inline: var(--spacing-3);
+    }
 }

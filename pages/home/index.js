@@ -11,8 +11,8 @@ import { insertedValues } from "./valuesData.js";
             setValueType(event, "data-is-filter-active");
             filteredArray = filterArrayByValueType();
             appendValueCards(filteredArray);
-            showValuesSum(filteredArray);
             deleteValue();
+            showValuesSum(filteredArray);
             toggleEmptyMensage();
         });
     });
@@ -26,14 +26,25 @@ import { insertedValues } from "./valuesData.js";
 
 function toggleEmptyMensage () {
     const cardValuesList = document.getElementById("value-list");
+    const activeFilterText = document.querySelector("[data-is-filter-active=on]").innerText;
     const emptyMessage = document.getElementById("empty-message");
+    const emptyMessageTitle = emptyMessage.querySelector("h2");
     const valuesCardAmount = cardValuesList.querySelectorAll("article").length;
+
     if (!valuesCardAmount) {
         emptyMessage.classList.remove("d-none");
         cardValuesList.classList.add("d-none");
     } else {
         emptyMessage.classList.add("d-none");
         cardValuesList.classList.remove("d-none");
+    }
+
+    if (activeFilterText == "Entradas") {
+        emptyMessageTitle.innerText = "Sem nenhum valor na categoria Entrada"
+    } else if (activeFilterText == "Saídas") {
+        emptyMessageTitle.innerText = "Sem nenhum valor na categoria Saída"
+    } else {
+        emptyMessageTitle.innerText = "Nenhum valor cadastrado";
     }
 }
 
@@ -50,6 +61,7 @@ function filterArrayByValueType () {
     const activeFilter = getTypeId(activeFilterText);
     const valuesArray = getLocalStorageInstanceAsArray("valuesArray") || insertedValues;
     let filteredArray;
+
     if (activeFilterText != "Todos") {
         filteredArray = valuesArray.filter( value => {
             return value.categoryID == activeFilter;
@@ -59,12 +71,14 @@ function filterArrayByValueType () {
         appendValueCards(valuesArray);
         return valuesArray;
     }
+
     return filteredArray;
 }
 
 function appendValueCards (valuesArray) {
     const valuesContainer = document.getElementById("value-list");
     valuesContainer.innerHTML = "";
+    
     valuesArray.forEach( valueData => {
         const cardHtml = createValueCard(valueData);
         valuesContainer.insertAdjacentHTML("beforeEnd", cardHtml);
@@ -89,8 +103,8 @@ function createValueCard (valueData) {
 
 function deleteValue () {
     const deleteButtons = [...document.querySelectorAll(".b-delete")];
+
     deleteButtons.forEach( button => {
-        console.log(button);
         button.addEventListener("click", event => {
             const valuesArray = getLocalStorageInstanceAsArray("valuesArray") || insertedValues;
             const buttonClicked = event.target;
@@ -99,11 +113,24 @@ function deleteValue () {
             const deletedCardIndex = valuesArray.findIndex( value => {
                 return value.id == deletedCardId;
             });
+
             valuesArray.splice(deletedCardIndex, 1);
             localStorage.setItem("valuesArray", JSON.stringify(valuesArray));
             cardValue.remove();
             toggleEmptyMensage();
+            showValuesSum(returnFilteredArray());
         });
+    });
+}
+
+function returnFilteredArray () {
+    const activeFilterText = document.querySelector("[data-is-filter-active=on]").innerText;
+    const activeFilter = getTypeId(activeFilterText);
+    const valuesArray = getLocalStorageInstanceAsArray("valuesArray");
+
+    return valuesArray.filter( value => {
+        if (activeFilterText != "Todos") return value.categoryID == activeFilter;
+        else return value.categoryID;
     });
 }
 

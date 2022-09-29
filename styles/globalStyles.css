@@ -6,6 +6,12 @@
 }
 
 :root {
+  --animation-duration: 0.2s;
+  --animation-type: ease;
+
+  --border-width-1: 0.094rem;
+  --border-width-2: 0.125rem;
+
   --color-brand-1: #6741d9;
   --color-brand-2: #4c3299;
   --color-brand-3: #f0ecfb;
@@ -30,14 +36,17 @@
 
   --font-line-height-1: 150%;
 
+  --font-family-1: "Inter", sans-serif;
+  --font-family-2: "Nunito", sans-serif;
+  
   --radius-1: 0.5rem;
   --radius-2: 0.25rem;
 
-  --animation-duration: 0.2s;
-  --animation-type: ease;
-
-  --font-family-1: "Inter", sans-serif;
-  --font-family-2: "Nunito", sans-serif;
+  --spacing-1: 1.75rem;
+  --spacing-2: 1rem;
+  --spacing-3: 0.875rem;
+  --spacing-4: 0.75rem;
+  --spacing-5: 0.5rem;
 }
 
 body {
@@ -59,12 +68,5 @@ button {
 
 .container {
   max-width: 43rem;
-  margin: 0 auto;
-}
-
-@media (max-width: 700px) {
-  .container {
-    max-width: 43rem;
-    margin: 0 1rem;
-  }
+  margin: 0 var(--spacing-2);
 }

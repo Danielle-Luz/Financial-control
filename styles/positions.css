@@ -11,5 +11,5 @@
 }
 
 .left-1 {
-    left: 16px;
+    left: var(--spacing-2);
 }

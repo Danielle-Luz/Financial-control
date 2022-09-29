@@ -1,11 +1,11 @@
 button {
-    flex-grow: 1;
     text-align: center;
+    transition: var(--animation-duration);
 }
 
 .b-delete {
-    height: 26px;
-    width: 28.25px;
+    height: 1.625rem;
+    width: 1.766rem;
 }
 
 .b-delete.bg-white.border-grey-lighter:hover {
@@ -20,8 +20,8 @@ button {
 .b-delete:hover .trash path {
     fill: #495057;
 }
-
+    
 .value-type {
-    width: 68px;
+    width: 4.25rem;
     text-align: center;
 }

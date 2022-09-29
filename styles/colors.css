@@ -36,16 +36,9 @@ button.bg-brand-1:hover {
     background-color: var(--color-mode);
 }
 
-.border-grey-lighter:hover:hover,
-.border-grey-lighter:hover:active,
-.border-grey-darker:hover {
+.hover-buttons-2:hover,
+.hover-buttons-2:focus {
     border-color: var(--color-brand-1);
-}
-
-.bg-white.border-grey-lighter:hover,
-.bg-white.border-grey-lighter:active {
-    background-color: var(--color-brand-3);
-    color: var(--color-brand-1);
 }
 
 .bg-grey-4 {
@@ -56,7 +49,7 @@ button.bg-brand-1:hover {
     background-color: var(--color-grey-5);
 }
 
-main .bg-grey-5:hover {
+main .bg-grey-5:hover, .hover-buttons-1:hover {
     background-color: var(--color-grey-4);
 }
 
@@ -79,4 +72,10 @@ main .bg-grey-5:hover {
 
 .border-brand-1 {
     border-color: var(--color-brand-1);
+}
+
+.hover-buttons-2.border-grey-lighter:hover,
+.hover-buttons-2.border-grey-lighter:active {
+    background-color: var(--color-brand-3);
+    color: var(--color-brand-1);
 }
