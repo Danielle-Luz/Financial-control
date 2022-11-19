@@ -4,9 +4,11 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Control Finance</title>
-        <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
-        <meta name="description" content="Control Finance - Seu controle financeiro">
+        <title>Financial control</title>
+        <link rel="shortcut icon" href="/assets/favicon.ico"
+            type="image/x-icon">
+        <meta name="description" content="Financial control - Seu controle
+            financeiro">
         <link rel="stylesheet" href="/styles/globalStyles.css">
         <link rel="stylesheet" href="/styles/colors.css">
         <link rel="stylesheet" href="/styles/texts.css">
@@ -20,40 +22,62 @@
         <link rel="stylesheet" href="/styles/media.css">
     </head>
     <body class="d-flex flex-column gap-2">
-        <div class="full-width full-height bg-opacity d-flex justify-center align-center position-fixed d-none" id="modal-wrapper">
-            <article class="modal bg-white d-flex flex-column gap-4 full-width radius-1">
+        <div class="full-width full-height bg-opacity d-flex justify-center
+            align-center position-fixed d-none" id="modal-wrapper">
+            <article class="modal bg-white d-flex flex-column gap-4 full-width
+                radius-1">
                 <section class="full-width d-flex justify-between align-center">
                     <h2 class="title-2">Registro de valor</h2>
-                    <button class="close-button title-2 bg-grey-5 radius-2 hover-buttons-1" data-modal-id="modal">X</button>
+                    <button class="close-button title-2 bg-grey-5 radius-2
+                        hover-buttons-1" data-modal-id="modal">X</button>
                 </section>
                 <p class="text-1">
-                    Digite o valor e em seguida aperte no botão referente ao tipo do valor 
+                    Digite o valor e em seguida aperte no botão referente ao
+                    tipo do valor
                 </p>
                 <form class="d-flex flex-column gap-9">
                     <label class="text-1">Valor</label>
-                    <div class="d-flex position-relative full-width align-center">
+                    <div class="d-flex position-relative full-width
+                        align-center">
                         <span class="position-absolute text-1 left-1">R$</span>
-                        <input class="full-width radius-1 border-3 border-grey-darker d-flex hover-buttons-2" type="text" placeholder="00,00" autocomplete="off" id="input-value">
+                        <input class="full-width radius-1 border-3
+                            border-grey-darker d-flex hover-buttons-2"
+                            type="text" placeholder="00,00" autocomplete="off"
+                            id="input-value">
                     </div>
                 </form>
-                <section class="d-flex gap-6 flex-column full-width value-type-wrapper full-width">
+                <section class="d-flex gap-6 flex-column full-width
+                    value-type-wrapper full-width">
                     <h2 class="text-1">Tipo de valor</h2>
-                    <div class="d-flex gap-8 flex-column full-width value-type-buttons">
-                        <button class="border-1 border-grey-lighter pd-inline-1 bg-white radius-1 color-grey-2 hover-buttons-2" data-type-selected="off">Entrada</button>
-                        <button class="border-1 border-grey-lighter pd-inline-1 bg-white radius-1 color-grey-2 hover-buttons-2" data-type-selected="off">Saída</button>
+                    <div class="d-flex gap-8 flex-column full-width
+                        value-type-buttons">
+                        <button class="border-1 border-grey-lighter pd-inline-1
+                            bg-white radius-1 color-grey-2 hover-buttons-2"
+                            data-type-selected="off">Entrada</button>
+                        <button class="border-1 border-grey-lighter pd-inline-1
+                            bg-white radius-1 color-grey-2 hover-buttons-2"
+                            data-type-selected="off">Saída</button>
                     </div>
                 </section>
                 <div class="d-flex gap-6 self-end full-width button-group">
-                    <button class="bg-grey-5 border-1 border-grey-lighter pd-inline-1 radius-1 hover-buttons-1" data-modal-id="modal">Cancelar</button>
-                    <button class="bg-brand-1 border-1 border-brand-1 pd-inline-1 color-white radius-1" id="b-submit">Inserir valor</button>
+                    <button class="bg-grey-5 border-1 border-grey-lighter
+                        pd-inline-1 radius-1 hover-buttons-1"
+                        data-modal-id="modal">Cancelar</button>
+                    <button class="bg-brand-1 border-1 border-brand-1
+                        pd-inline-1 color-white radius-1" id="b-submit">Inserir
+                        valor</button>
                 </div>
             </article>
         </div>
         <div class="bg-grey-5">
             <header class="container d-flex justify-between pd-block-1">
-                <div class="d-flex flex-column justify-between full-width gap-5 header-inner-wrapper">
-                    <a href="index.html"><h1 class="title-1 color-grey-1"><span class="color-brand-1">Control</span> Finance</h1></a>
-                    <button class="bg-brand-1 color-white border-1 border-brand-1 text-1 pd-inline-1 radius-1"  data-modal-id="modal">Registrar novo valor</button>
+                <div class="d-flex flex-column justify-between full-width gap-5
+                    header-inner-wrapper">
+                    <a href="index.html"><h1 class="title-1 color-grey-1"><span
+                                class="color-brand-1">Financial</span> control</h1></a>
+                    <button class="bg-brand-1 color-white border-1
+                        border-brand-1 text-1 pd-inline-1 radius-1"
+                        data-modal-id="modal">Registrar novo valor</button>
                 </div>
             </header>
         </div>
@@ -61,13 +85,19 @@
             <article class="d-flex flex-column gap-1 financial-summary">
                 <h2 class="title-2">Resumo financeiro</h2>
                 <div class="d-flex gap-6">
-                    <button class="bg-brand-3 border-1 color-brand-1 border-brand-1 pd-inline-1 radius-1 text-1" data-is-filter-active="on">
+                    <button class="bg-brand-3 border-1 color-brand-1
+                        border-brand-1 pd-inline-1 radius-1 text-1"
+                        data-is-filter-active="on">
                         Todos
                     </button>
-                    <button class="bg-white border-1 border-grey-lighter pd-inline-1 radius-1 hover-buttons-2 text-1" data-is-filter-active="off">
+                    <button class="bg-white border-1 border-grey-lighter
+                        pd-inline-1 radius-1 hover-buttons-2 text-1"
+                        data-is-filter-active="off">
                         Entradas
                     </button>
-                    <button class="bg-white border-1 border-grey-lighter pd-inline-1 radius-1 hover-buttons-2 text-1" data-is-filter-active="off">
+                    <button class="bg-white border-1 border-grey-lighter
+                        pd-inline-1 radius-1 hover-buttons-2 text-1"
+                        data-is-filter-active="off">
                         Saídas
                     </button>
                 </div>
@@ -76,7 +106,9 @@
                 <h2 class="text-1">Soma dos valores</h2>
                 <span class="text-1" id="total">R$ 0,00</span>
             </article>
-            <button class="pd-block-2 full-width bg-grey-5 radius-1 d-flex flex-column align-center gap-6 border-2 border-grey-darker fit-height" id="empty-message" data-modal-id="modal">
+            <button class="pd-block-2 full-width bg-grey-5 radius-1 d-flex
+                flex-column align-center gap-6 border-2 border-grey-darker
+                fit-height" id="empty-message" data-modal-id="modal">
                 <h2 class="title-2-bold fit-width">Nenhum valor cadastrado</h2>
                 <p class="text-1 color-grey-2 fit-width">Registrar novo valor</p>
             </button>
